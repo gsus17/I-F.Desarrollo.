@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { IUser } from './home.interface';
+import { Detail } from '../detail/detail';
 
 @Component({
   selector: 'page-home',
@@ -205,4 +206,9 @@ export class HomePage {
 
   }
 
+  public goToDetail(id: string) {
+    this.navCtrl.push(Detail, {
+      user_id: id
+    })
+  }
 }

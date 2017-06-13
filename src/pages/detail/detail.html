@@ -1,0 +1,23 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Iguana Fix
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <ion-card>
+        <img src="{{userDetail.photo}}" />
+        <ion-card-content>
+            <ion-list>
+                <ion-item>
+                    <ion-avatar item-start>
+                        <img src="{{userDetail.thumb}}" />
+                    </ion-avatar>
+                    <h2>{{userDetail.first_name}} {{userDetail.last_name}}</h2>
+                    <p>{{userDetail.birth_date | date: 'dd/MM/yyyy'}}</p>
+                </ion-item>
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
+</ion-content>
