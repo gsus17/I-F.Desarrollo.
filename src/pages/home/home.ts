@@ -8,8 +8,14 @@ import { Detail } from '../detail/detail';
   templateUrl: 'home.html'
 })
 
+// Exporta el page Home.
 export class HomePage {
 
+  /**
+   * Data estatica de los usuarios.
+   * @type {IUser[]}
+   * @memberof HomePage
+   */
   public users: IUser[] = [
     {
       "user_id": "100",
@@ -203,9 +209,13 @@ export class HomePage {
   ]
 
   constructor(public navCtrl: NavController) {
-
   }
 
+  /**
+   * Redireciona al page Detail con el id como parametro.
+   * @param {string} id Id del usuario.
+   * @memberof HomePage
+   */
   public goToDetail(id: string) {
     this.navCtrl.push(Detail, {
       user_id: id

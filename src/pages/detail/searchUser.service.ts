@@ -1,17 +1,29 @@
-// importamos el modulo Injectable de AngularJS
+// importa el modulo Injectable de AngularJS
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
+import { IUser } from '../home/home.interface';
 
 @Injectable()
 export class SearchUser {
 
-    public data;
+    /**
+     * Usuario a retornar.
+     * @type {IUser}
+     * @memberof SearchUser
+     */
+    public data:IUser = null;
 
     constructor(private http: Http) {
     }
 
+    /**
+     * Realiza la peticion al api segun el id del usuario.
+     * @param {string} id Id del usuario requerido.
+     * @returns Json con data del usuario especifico.
+     * @memberof SearchUser
+     */
     public searchUserById(id: string) {
-        if (this.data) {
+        if (this.data != null && this.data.user_id === id) {
             return Promise.resolve(this.data);
         }
 

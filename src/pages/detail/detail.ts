@@ -9,7 +9,14 @@ import { LoadingController } from 'ionic-angular';
     templateUrl: 'detail.html'
 })
 
+// Exporta la clase Detail.
 export class Detail {
+
+    /**
+     * Estructura inicial del usuario.
+     * @type {IUser}
+     * @memberof Detail
+     */
     public userDetail: IUser = {
         birth_date: ``,
         created_at: ``,
@@ -21,6 +28,11 @@ export class Detail {
         user_id: ``
     };
 
+    /**
+     * User id que sera recuperado como parametro.
+     * @type {string}
+     * @memberof Detail
+     */
     public userId: string = '';
 
     constructor(
@@ -31,15 +43,25 @@ export class Detail {
         this.searchUser(this.userId);
     }
 
+    /**
+     * Solicita el usuario indicado al servicio searchUser.
+     * @param {string} userId User id.
+     * @memberof Detail
+     */
     public searchUser(userId: string) {
+
+        // Crea el spinner loading.
         let loading = this.loadingCtrl.create({
-            content: '<ion-spinner name="bubbles"></ion-spinner>'
+            content: 'Por favor espere...'
         });
 
+        // Presenta el spinner loading.
         loading.present();
 
         this.searchUserService.searchUserById(userId).then((data) => {
             this.userDetail = data;
+
+            // Detiene el spinner loading.
             loading.dismiss();
         })
     }
